@@ -262,7 +262,7 @@ sub ParseByTimeParseDate {
         PREFER_FUTURE => RT->Config->Get('AmbiguousDayInFuture'),
     );
     unless ( defined $date ) {
-        $RT::Logger->warning(
+        $RT::Logger->info(
             "Couldn't parse date '$args{'Value'}' by Time::ParseDate"
         );
         return undef;
@@ -302,7 +302,7 @@ sub ParseByDateTimeFormatNatural {
         return $date;
     }
     else {
-        $RT::Logger->warning(
+        $RT::Logger->info(
             "Couldn't parse date '$args{'Value'}' by DateTime::Format::Natural"
         );
         return undef;

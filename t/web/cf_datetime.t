@@ -214,18 +214,6 @@ diag 'check invalid inputs';
     $m->form_name("TicketCreate");
     is( $m->value( "Object-RT::Ticket--CustomField-$cfid-Values" ),
         "foodate", "datetime value still on form" );
-
-    my @warnings = $m->get_warnings;
-    chomp @warnings;
-    is_deeply(
-        [ @warnings ],
-        [
-            (
-                q{Couldn't parse date 'foodate' by Time::ParseDate},
-                q{Couldn't parse date 'foodate' by DateTime::Format::Natural}
-            ) x 2
-        ]
-    );
 }
 
 diag 'retain values when adding attachments';
