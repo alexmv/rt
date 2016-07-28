@@ -179,11 +179,14 @@ diag 'check invalid inputs';
             "Object-RT::Ticket--CustomField-$cfid-Values" => 'foodate',
         },
     );
-    $m->content_like( qr/Ticket \d+ created/,
-        "a ticket is created succesfully" );
+    $m->content_unlike( qr/Ticket \d+ created/,
+        "failed validation stops ticket creation" );
 
-    $m->content_contains('test cf date:', 'has no cf date field on the page' );
-    $m->content_lacks('foodate', 'invalid dates not set' );
+    $m->content_contains('test cf date: Not a valid date', 'warning displayed' );
+
+    $m->form_name("TicketCreate");
+    is( $m->value( "Object-RT::Ticket--CustomField-$cfid-Values" ),
+        "foodate", "date value still on form" );
 
     my @warnings = $m->get_warnings;
     chomp @warnings;

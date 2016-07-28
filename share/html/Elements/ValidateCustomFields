@@ -74,17 +74,7 @@ while ( my $CF = $CustomFields->Next ) {
         CustomField => $CF,
         Value       => ($submitted->{Values} // $submitted->{Value} // $submitted->{Upload}),
     );
-    if ($CF->Type =~ /^Date(?:Time)?$/) {
-        @values = grep {
-            my $DateObj = RT::Date->new ( $session{'CurrentUser'} );
-            $DateObj->Set(
-                Format => 'unknown',
-                Value => $_,
-                ($CF->Type eq "Date" ? (Timezone => 'utc') : ())
-            );
-            $DateObj->IsSet
-        } @values;
-    }
+
     push @values, '' unless @values;
 
     for my $value( @values ) {

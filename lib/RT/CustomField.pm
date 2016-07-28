@@ -1851,6 +1851,8 @@ sub _CanonicalizeValueDateTime {
     my $DateObj = RT::Date->new( $self->CurrentUser );
     $DateObj->Set( Format => 'unknown',
                    Value  => $args->{'Content'} );
+    return (0, $self->loc("Not a valid datetime"))
+        unless $DateObj->IsSet;
     $args->{'Content'} = $DateObj->ISO;
     return 1;
 }
@@ -1866,6 +1868,8 @@ sub _CanonicalizeValueDate {
     $DateObj->Set( Format   => 'unknown',
                    Value    => $args->{'Content'},
                  );
+    return (0, $self->loc("Not a valid date"))
+        unless $DateObj->IsSet;
     $args->{'Content'} = $DateObj->Date( Timezone => 'user' );
     return 1;
 }
