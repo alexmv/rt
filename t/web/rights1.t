@@ -30,8 +30,7 @@ $agent->login( $user_obj->Name, 'customer');
 # Test for absence of Configure and Preferences tabs.
 ok(!$agent->find_link( url => "$RT::WebPath/Admin/",
                        text => 'Admin'), "No admin tab" );
-ok(!$agent->find_link( url => "$RT::WebPath/User/Prefs.html",
-                       text => 'Preferences'), "No prefs pane" );
+ok(!$agent->find_link( id => 'preferences-settings' ), "No prefs pane" );
 
 # Now test for their presence, one at a time.  Sleep for a bit after
 # ACL changes, thanks to the 10s ACL cache.
@@ -50,8 +49,7 @@ ok ($revokeid,$revokemsg);
 ok ($grantid,$grantmsg);
 $agent->reload();
 $agent->content_contains('Logout', "Reloaded page successfully");
-ok($agent->find_link(
-                       id => 'preferences-settings' ), "Found prefs pane" );
+ok($agent->find_link( id => 'preferences-settings' ), "Found prefs pane" );
 ($revokeid,$revokemsg) = $user_obj->PrincipalObj->RevokeRight(Right => 'ModifySelf');
 ok ($revokeid,$revokemsg);
 # Good.  Now load the search page and test Load/Save Search.

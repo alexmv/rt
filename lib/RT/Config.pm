@@ -1067,18 +1067,6 @@ our %META;
     ChartColors => {
         Type    => 'ARRAY',
     },
-    LogoImageHeight => {
-        Deprecated => {
-            LogLevel => "info",
-            Message => "The LogoImageHeight configuration option did not affect display, and has been removed; please remove it from your RT_SiteConfig.pm",
-        },
-    },
-    LogoImageWidth => {
-        Deprecated => {
-            LogLevel => "info",
-            Message => "The LogoImageWidth configuration option did not affect display, and has been removed; please remove it from your RT_SiteConfig.pm",
-        },
-    },
 
     ExternalSettings => {
         Obfuscate => sub {
