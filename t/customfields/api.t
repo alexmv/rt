@@ -3,8 +3,9 @@
 use strict;
 use warnings FATAL => 'all';
 
-use RT::Test nodata => 1, tests => 157;
+use RT::Test tests => undef;
 use Test::Warn;
+use Mojo::DOM;
 
 # Before we get going, ditch all object_cfs; this will remove
 # all custom fields systemwide;
@@ -253,7 +254,7 @@ my $all_classes = RT::Class->new( RT->SystemUser );
     is($msg, 'Globally added custom field custom_field_0.', "Adding custom field globally produces appropriate message");
 
     ($status, $msg) = $custom_field->RemoveFromObject( $all_queues );
-    is($msg, 'Globally removed custom field custom_field_0.', "Rmeoving custom field globally produces appropriate message");
+    is($msg, 'Globally removed custom field custom_field_0.', "Removing custom field globally produces appropriate message");
 }
 
 # Ticket CustomField Message Test
@@ -298,3 +299,27 @@ my $all_classes = RT::Class->new( RT->SystemUser );
     is($msg, 'Globally removed custom field custom_field_2.', "Removing custom field globally produces appropriate message");
 }
 
+# Each custom field must have a corresponding class selector with invalid characters escaped
+{
+    my($baseurl, $m ) = RT::Test->started_ok;
+    ok($m->login, 'logged in');
+
+    $m->get_ok($baseurl . '/Admin/CustomFields/Modify.html?Create=1');
+    $m->form_name('ModifyCustomField');
+    $m->field('Name' => 'test$class%name');
+    $m->click('Update');
+
+    $m->get_ok($baseurl . '/Admin/CustomFields/Objects.html?id=10');
+    $m->submit_form_ok({
+      with_fields => {
+        'AddCustomField-10' => 0,
+      },
+      button => 'UpdateObjs',
+    }, 'Added new custom field globally');
+
+    my $res = $m->get($baseurl . '/Ticket/Display.html?id=1');
+    my $dom = Mojo::DOM->new($res->decoded_content);
+    my $class = $dom->at('.custom-field-test-class-name');
+    like($class, qr/test-class-name/, 'Class selector added to custom field, invalid characters have been escaped');
+}
+done_testing();
