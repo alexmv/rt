@@ -36,7 +36,7 @@ diag "add 'qwe', 'ASD', '0' and ' foo ' as values to the CF";
             },
             button => 'Update',
         );
-        $m->content_contains('Object created', 'added a value to the CF' ); # or diag $m->content;
+        $m->content_contains('custom field value added', 'added a value to the CF' ); # or diag $m->content;
         my $v = $value;
         $v =~ s/^\s+$//;
         $v =~ s/\s+$//;
