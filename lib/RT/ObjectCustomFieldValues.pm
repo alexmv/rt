@@ -156,7 +156,6 @@ sub HasEntry {
         foreach my $item ( @{$self->ItemsArrayRef} ) {
             push @{$_OCFV_CACHE->{$ocfv_key}}, {
                 'ObjectId'       => $item->Id,
-                'Object'         => $item,
                 'CustomFieldObj' => $item->CustomFieldObj,
                 'Content'        => $item->_Value('Content'),
                 'LargeContent'   => $item->LargeContent };
@@ -164,6 +163,7 @@ sub HasEntry {
     }
 
     my %canon_value;
+    my $item_id;
     foreach my $item ( @{$_OCFV_CACHE->{$ocfv_key}} ) {
         my $cf = $item->{'CustomFieldObj'};
         my $args = $canon_value{ $cf->Type };
@@ -176,25 +176,35 @@ sub HasEntry {
 
         if ( $cf->Type eq 'Select' ) {
             # select is case insensitive
-            return $item->{'Object'} if lc $item->{'Content'} eq lc $args->{Content};
+            $item_id = $item->{'ObjectId'} if lc $item->{'Content'} eq lc $args->{Content};
         }
         else {
             if ( ($item->{'Content'} // '') eq $args->{Content} ) {
                 if ( defined $item->{'LargeContent'} ) {
-                    return $item->{'Object'}
+                    $item_id = $item->{'ObjectId'}
                       if defined $args->{LargeContent}
                       && $item->{'LargeContent'} eq $args->{LargeContent};
                 }
                 else {
-                    return $item->{'Object'} unless defined $args->{LargeContent};
+                    $item_id = $item->{'ObjectId'} unless defined $args->{LargeContent};
                 }
             } elsif ( $item->{'LargeContent'} && $args->{Content} ) {
-                return $item->{'Object'} if ($item->{'LargeContent'} eq $args->{Content});
+                $item_id = $item->{'ObjectId'} if ($item->{'LargeContent'} eq $args->{Content});
             }
         }
+        last if $item_id;
     }
 
-    return undef;
+    if ( $item_id ) {
+        my $ocfv = RT::ObjectCustomFieldValue->new( $self->CurrentUser );
+        my ($ret, $msg) = $ocfv->Load($item_id);
+        RT::Logger->error("Unable to load object custom field value from id: $item_id $msg")
+            unless $ret;
+        return $ocfv;
+    }
+    else {
+        return undef;
+    }
 }
 
 sub _DoSearch {

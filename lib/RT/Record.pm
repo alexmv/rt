@@ -2066,7 +2066,6 @@ sub _AddCustomFieldValue {
         # Add the new one
         push @{$RT::ObjectCustomFieldValues::_OCFV_CACHE->{$ocfv_key}}, {
             'ObjectId'       => $new_value->Id,
-            'Object'         => $new_value,
             'CustomFieldObj' => $new_value->CustomFieldObj,
             'Content'        => $args{'Value'},
             'LargeContent'   => $args{'LargeContent'} };
@@ -2139,7 +2138,7 @@ sub _AddCustomFieldValue {
         # Update the OCFV cache
         my $ocfv_key = $new_value->GetOCFVCacheKey;
         push @{$RT::ObjectCustomFieldValues::_OCFV_CACHE->{$ocfv_key}}, {
-            'Object'         => $new_value,
+            'ObjectId'       => $new_value->Id,
             'CustomFieldObj' => $new_value->CustomFieldObj,
             'Content'        => $args{'Value'},
             'LargeContent'   => $args{'LargeContent'} };
