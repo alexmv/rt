@@ -51,11 +51,24 @@ $content
 <%INIT>
 my $args = JSON::from_json($content);
 my $id = $args->{dashboard_id};
+my $user_id = $args->{user_id};
+my $is_global = $args->{is_global};
 
 my ($ok, $msg);
 if ($id eq 'MyRT') {
-    my $user = $session{CurrentUser}->UserObj;
-    ($ok, $msg) = $user->SetPreferences('HomepageSettings', $args->{panes});
+        my $user = $session{CurrentUser};
+        if($user_id){
+            $user->Load($user_id);
+            ($ok, $msg) = $user->SetPreferences('HomepageSettings', $args->{panes});
+      }
+      elsif($is_global){
+        my $sys = RT::System->new($session{'CurrentUser'});
+        my ($default_portlets) = $sys->Attributes->Named('HomepageSettings');
+        ($ok, $msg) = $default_portlets->SetContent( $args->{panes} );
+      }
+      else{
+          ($ok, $msg) = $user->SetPreferences('HomepageSettings', $args->{panes});
+        }
 }
 else {
     use RT::Dashboard;
