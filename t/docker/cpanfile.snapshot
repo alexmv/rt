@@ -218,18 +218,6 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
-  B-Hooks-OP-Check-0.22
-    pathname: E/ET/ETHER/B-Hooks-OP-Check-0.22.tar.gz
-    provides:
-      B::Hooks::OP::Check 0.22
-    requirements:
-      DynaLoader 0
-      ExtUtils::Depends 0.302
-      ExtUtils::MakeMaker 0
-      parent 0
-      perl 5.008001
-      strict 0
-      warnings 0
   Business-Hours-0.12
     pathname: R/RU/RUZ/Business-Hours-0.12.tar.gz
     provides:
@@ -430,19 +418,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       File::Spec 0.80
       perl 5.006
-  Class-Method-Modifiers-2.12
-    pathname: E/ET/ETHER/Class-Method-Modifiers-2.12.tar.gz
-    provides:
-      Class::Method::Modifiers 2.12
-    requirements:
-      B 0
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      base 0
-      perl 5.006
-      strict 0
-      warnings 0
   Class-Mix-0.006
     pathname: Z/ZE/ZEFRAM/Class-Mix-0.006.tar.gz
     provides:
@@ -551,6 +526,17 @@ DISTRIBUTIONS
     requirements:
       Convert::ASN1 0.19
       ExtUtils::MakeMaker 0
+  DBD-Pg-3.7.0
+    pathname: T/TU/TURNSTEP/DBD-Pg-3.7.0.tar.gz
+    provides:
+      Bundle::DBD::Pg v3.7.0
+      DBD::Pg v3.7.0
+    requirements:
+      DBI 1.614
+      ExtUtils::MakeMaker 6.11
+      Test::More 0.88
+      Time::HiRes 0
+      version 0
   DBD-SQLite-1.54
     pathname: I/IS/ISHIGAKI/DBD-SQLite-1.54.tar.gz
     provides:
@@ -819,34 +805,6 @@ DISTRIBUTIONS
       Data::Page 2
       Test::Exception 0
       Test::More 0
-  Data-Perl-0.002009
-    pathname: M/MA/MATTP/Data-Perl-0.002009.tar.gz
-    provides:
-      Data::Perl 0.002009
-      Data::Perl::Bool 0.002009
-      Data::Perl::Code 0.002009
-      Data::Perl::Collection::Array 0.002009
-      Data::Perl::Collection::Hash 0.002009
-      Data::Perl::Counter 0.002009
-      Data::Perl::Number 0.002009
-      Data::Perl::Role::Bool 0.002009
-      Data::Perl::Role::Code 0.002009
-      Data::Perl::Role::Collection::Array 0.002009
-      Data::Perl::Role::Collection::Hash 0.002009
-      Data::Perl::Role::Counter 0.002009
-      Data::Perl::Role::Number 0.002009
-      Data::Perl::Role::String 0.002009
-      Data::Perl::String 0.002009
-    requirements:
-      Class::Method::Modifiers 0
-      ExtUtils::MakeMaker 6.30
-      List::MoreUtils 0
-      List::Util 0
-      Module::Runtime 0
-      Role::Tiny 0
-      Scalar::Util 0
-      parent 0
-      strictures 0
   Data-UUID-1.221
     pathname: R/RJ/RJBS/Data-UUID-1.221.tar.gz
     provides:
@@ -2503,16 +2461,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.30
       strict 0
       warnings 0
-  ExtUtils-Depends-0.405
-    pathname: X/XA/XAOC/ExtUtils-Depends-0.405.tar.gz
-    provides:
-      ExtUtils::Depends 0.405
-    requirements:
-      Data::Dumper 0
-      ExtUtils::MakeMaker 0
-      File::Spec 0
-      IO::File 0
-      perl 5.006
   ExtUtils-Helpers-0.026
     pathname: L/LE/LEONT/ExtUtils-Helpers-0.026.tar.gz
     provides:
@@ -2727,30 +2675,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       GD 1
-  GnuPG-Interface-0.52
-    pathname: A/AL/ALEXMV/GnuPG-Interface-0.52.tar.gz
-    provides:
-      GnuPG::Fingerprint undef
-      GnuPG::Handles undef
-      GnuPG::HashInit undef
-      GnuPG::Interface 0.52
-      GnuPG::Key undef
-      GnuPG::Options undef
-      GnuPG::PrimaryKey undef
-      GnuPG::PublicKey undef
-      GnuPG::Revoker undef
-      GnuPG::SecretKey undef
-      GnuPG::Signature undef
-      GnuPG::SubKey undef
-      GnuPG::UserAttribute undef
-      GnuPG::UserId undef
-    requirements:
-      ExtUtils::MakeMaker 6.36
-      Fatal 0
-      Math::BigInt 1.78
-      Moo 0.091011
-      MooX::HandlesVia 0.001004
-      MooX::late 0.014
   GraphViz-2.24
     pathname: R/RS/RSAVAGE/GraphViz-2.24.tgz
     provides:
@@ -3302,16 +3226,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       LWP 0
-  Lexical-SealRequireHints-0.011
-    pathname: Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.011.tar.gz
-    provides:
-      Lexical::SealRequireHints 0.011
-    requirements:
-      Module::Build 0
-      Test::More 0.41
-      perl 5.006
-      strict 0
-      warnings 0
   List-MoreUtils-0.426
     pathname: R/RE/REHSACK/List-MoreUtils-0.426.tar.gz
     provides:
@@ -3866,61 +3780,6 @@ DISTRIBUTIONS
       Pod::Simple 3.09
       Time::Local 1.2
       perl 5.010001
-  Moo-2.003002
-    pathname: H/HA/HAARG/Moo-2.003002.tar.gz
-    provides:
-      Method::Generate::Accessor undef
-      Method::Generate::BuildAll undef
-      Method::Generate::Constructor undef
-      Method::Generate::DemolishAll undef
-      Moo 2.003002
-      Moo::HandleMoose undef
-      Moo::HandleMoose::FakeConstructor undef
-      Moo::HandleMoose::FakeMetaClass undef
-      Moo::HandleMoose::_TypeMap undef
-      Moo::Object undef
-      Moo::Role 2.003002
-      Moo::_Utils undef
-      Moo::_mro undef
-      Moo::_strictures undef
-      Moo::sification undef
-      oo undef
-    requirements:
-      Class::Method::Modifiers 1.1
-      Devel::GlobalDestruction 0.11
-      Exporter 5.57
-      ExtUtils::MakeMaker 0
-      Module::Runtime 0.014
-      Role::Tiny 2.000004
-      Scalar::Util 0
-      Sub::Defer 2.003001
-      Sub::Quote 2.003001
-      perl 5.006
-  MooX-HandlesVia-0.001008
-    pathname: M/MA/MATTP/MooX-HandlesVia-0.001008.tar.gz
-    provides:
-      Data::Perl::Bool::MooseLike 0.001008
-      Data::Perl::Collection::Array::MooseLike 0.001008
-      Data::Perl::Collection::Hash::MooseLike 0.001008
-      Data::Perl::Number::MooseLike 0.001008
-      Data::Perl::String::MooseLike 0.001008
-      MooX::HandlesVia 0.001008
-    requirements:
-      Class::Method::Modifiers 0
-      Data::Perl 0.002006
-      ExtUtils::MakeMaker 0
-      Module::Runtime 0
-      Moo 1.003000
-      Role::Tiny 0
-  MooX-late-0.015
-    pathname: T/TO/TOBYINK/MooX-late-0.015.tar.gz
-    provides:
-      MooX::late 0.015
-      MooX::late::DefinitionContext 0.015
-    requirements:
-      ExtUtils::MakeMaker 6.17
-      Moo 1.006000
-      Type::Utils 1.000001
   Mozilla-CA-20160104
     pathname: A/AB/ABH/Mozilla-CA-20160104.tar.gz
     provides:
@@ -4202,17 +4061,6 @@ DISTRIBUTIONS
       if 0
       overload 0
       perl 5.008001
-      strict 0
-      warnings 0
-  PerlIO-eol-0.16
-    pathname: S/SH/SHLOMIF/PerlIO-eol-0.16.tar.gz
-    provides:
-      PerlIO::eol 0.16
-    requirements:
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      XSLoader 0
-      perl 5.007003
       strict 0
       warnings 0
   Plack-1.0044
@@ -5268,48 +5116,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Type-Tiny-1.002001
-    pathname: T/TO/TOBYINK/Type-Tiny-1.002001.tar.gz
-    provides:
-      Devel::TypeTiny::Perl56Compat 1.002001
-      Devel::TypeTiny::Perl58Compat 1.002001
-      Error::TypeTiny 1.002001
-      Error::TypeTiny::Assertion 1.002001
-      Error::TypeTiny::Compilation 1.002001
-      Error::TypeTiny::WrongNumberOfParameters 1.002001
-      Eval::TypeTiny 1.002001
-      Reply::Plugin::TypeTiny 1.002001
-      Test::TypeTiny 1.002001
-      Type::Coercion 1.002001
-      Type::Coercion::FromMoose 1.002001
-      Type::Coercion::Union 1.002001
-      Type::Library 1.002001
-      Type::Params 1.002001
-      Type::Parser 1.002001
-      Type::Registry 1.002001
-      Type::Tiny 1.002001
-      Type::Tiny::Class 1.002001
-      Type::Tiny::Duck 1.002001
-      Type::Tiny::Enum 1.002001
-      Type::Tiny::Intersection 1.002001
-      Type::Tiny::Role 1.002001
-      Type::Tiny::Union 1.002001
-      Type::Utils 1.002001
-      Types::Common::Numeric 1.002001
-      Types::Common::String 1.002001
-      Types::Standard 1.002001
-      Types::Standard::ArrayRef 1.002001
-      Types::Standard::CycleTuple 1.002001
-      Types::Standard::Dict 1.002001
-      Types::Standard::HashRef 1.002001
-      Types::Standard::Map 1.002001
-      Types::Standard::ScalarRef 1.002001
-      Types::Standard::Tuple 1.002001
-      Types::TypeTiny 1.002001
-    requirements:
-      Exporter::Tiny 0.026
-      ExtUtils::MakeMaker 6.17
-      perl 5.006001
   UNIVERSAL-require-0.18
     pathname: N/NE/NEILB/UNIVERSAL-require-0.18.tar.gz
     provides:
@@ -5610,20 +5416,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0.47
-  bareword-filehandles-0.005
-    pathname: I/IL/ILMARI/bareword-filehandles-0.005.tar.gz
-    provides:
-      bareword::filehandles 0.005
-    requirements:
-      B::Hooks::OP::Check 0
-      ExtUtils::Depends 0
-      ExtUtils::MakeMaker 0
-      Lexical::SealRequireHints 0
-      Test::More 0.88
-      XSLoader 0
-      perl 5.008001
-      strict 0
-      warnings 0
   boolean-0.46
     pathname: I/IN/INGY/boolean-0.46.tar.gz
     provides:
@@ -5639,24 +5431,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       perl 5
       vars 0
-  indirect-0.38
-    pathname: V/VP/VPIT/indirect-0.38.tar.gz
-    provides:
-      indirect 0.38
-    requirements:
-      Carp 0
-      Config 0
-      ExtUtils::MakeMaker 0
-      File::Spec 0
-      IO::Handle 0
-      IO::Select 0
-      IPC::Open3 0
-      POSIX 0
-      Socket 0
-      Test::More 0
-      XSLoader 0
-      lib 0
-      perl 5.008001
   libwww-perl-6.29
     pathname: O/OA/OALDERS/libwww-perl-6.29.tar.gz
     provides:
@@ -5716,21 +5490,6 @@ DISTRIBUTIONS
       WWW::RobotRules 6
       base 0
       perl 5.008001
-      strict 0
-      warnings 0
-  multidimensional-0.013
-    pathname: I/IL/ILMARI/multidimensional-0.013.tar.gz
-    provides:
-      multidimensional 0.013
-    requirements:
-      B::Hooks::OP::Check 0.19
-      CPAN::Meta 2.112580
-      ExtUtils::Depends 0
-      ExtUtils::MakeMaker 0
-      Lexical::SealRequireHints 0.005
-      Test::More 0.88
-      XSLoader 0
-      perl 5.008
       strict 0
       warnings 0
   namespace-autoclean-0.28
@@ -5815,6 +5574,7 @@ DISTRIBUTIONS
       Net::LDAPS 0.06
     requirements:
       Convert::ASN1 0.2
+      Digest::HMAC_MD5 0
       Digest::MD5 0
       ExtUtils::MakeMaker 6.42
       File::Basename 0
@@ -5836,13 +5596,3 @@ DISTRIBUTIONS
       URI::ldap 1.1
       XML::SAX::Base 0
       perl 5.008001
-  strictures-2.000003
-    pathname: H/HA/HAARG/strictures-2.000003.tar.gz
-    provides:
-      strictures 2.000003
-      strictures::extra undef
-    requirements:
-      bareword::filehandles 0
-      indirect 0
-      multidimensional 0
-      perl 5.006
