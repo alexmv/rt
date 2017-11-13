@@ -1,0 +1,3 @@
+- name: tests
+  service: rt
+  command: make -C /opt/rt4/build test
