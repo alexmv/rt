@@ -68,24 +68,17 @@ BEGIN { # BEGIN RT CMD BOILERPLATE
 }
 
 use RT -init;
-use RT::Interface::CLI ();
+use RT::Interface::CLI qw(Init);
 use HTML::Entities;
 
-use Getopt::Long qw(GetOptions);
 my %OPT = ( memory => '2M', limit => 0 );
-GetOptions( \%OPT,
-    "help|h!",
-    "debug!",
-    "quiet!",
-
+Init( \%OPT,
     "all!",
     "limit=i",
 
     "memory=s",
 );
 $OPT{limit} ||= 200;
-
-RT::Interface::CLI->ShowHelp if $OPT{help};
 
 use Fcntl ':flock';
 if ( !flock main::DATA, LOCK_EX | LOCK_NB ) {
@@ -94,7 +87,7 @@ if ( !flock main::DATA, LOCK_EX | LOCK_NB ) {
         exit;
     }
     else {
-        print STDERR "$0 is already running\n";
+        RT::Logger->error("$0 is already running");
         exit 1;
     }
 }
